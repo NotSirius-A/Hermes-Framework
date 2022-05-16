@@ -67,7 +67,7 @@ class App:
 
     def getarticlesdb(self) -> None:
         with self.storage_obj as s:
-            articles = s.get_all_rows_in_table(s.tables[1])
+            articles = s.get_all_rows_in_table(s.tables["articles"])
 
         if len(articles) < 1:
             print("No articles found")
@@ -79,13 +79,13 @@ class App:
 
     def deletearticlesdb(self) -> None:
         with self.storage_obj as s:
-            articles = s.delete_table(s.tables[1])
+            articles = s.delete_table(s.tables["articles"])
 
     def deletescrapersdb(self) -> None:
         with self.storage_obj as s:
-            articles = s.delete_table(s.tables[1])
+            articles = s.delete_table(s.tables["scrapers"])
 
     def info(self) -> None:
-        print(f"You are running Notifier Framework version: {master_settings.VERSION}")
+        print(f"You are running Hermes Framework version: {master_settings.VERSION}")
         print(f"Source: {master_settings.GITHUB_LINK}")
         print(f"Made by: {master_settings.AUTHOR}")
