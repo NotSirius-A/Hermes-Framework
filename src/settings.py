@@ -1,7 +1,23 @@
 import scrapers, storages, mailers
 from pathlib import Path
+import logging, sys
 
 BASE_DIR = Path(__file__).resolve().parent
+
+
+
+logging.basicConfig(
+                handlers=[
+                    logging.FileHandler("logs.log"),
+                    logging.StreamHandler(sys.stdout)
+                ],
+                format='[%(asctime)s] %(name)s : %(levelname)s | %(message)s',
+                datefmt='%Y-%m-%d %H:%M:%S',
+                level=logging.INFO
+)
+
+
+
 
 NOTIFY = True
 

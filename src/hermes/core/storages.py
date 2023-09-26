@@ -4,6 +4,8 @@ from pathlib import Path
 from hermes.core import fields, tables
 from hermes.core.scrapers import BaseScraper
 
+import logging
+
 class BaseStorage():
     fields = None
     row_factory = sqlite3.Row
@@ -42,6 +44,7 @@ class BaseStorage():
         try:
             self.conn = sqlite3.connect(str(self.database_path))
             self.conn.row_factory = self.row_factory
+            self.conn.set_trace_callback(logging.debug)
         except sqlite3.Error as e:
             raise e
 

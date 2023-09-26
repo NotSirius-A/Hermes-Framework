@@ -5,7 +5,7 @@ from pathlib import PurePath
 
 class BaseNotifier():
     """
-    Base Notifier class which all notifers should inherit from
+    Base Notifier class which all notifiers should inherit from
     """
 
     def __init__(self, receivers_path: str=None) -> None:
@@ -15,7 +15,7 @@ class BaseNotifier():
         if isinstance(receivers_path, PurePath):
             self.receivers_path = receivers_path
         else:
-            raise NotImplementedError(f"Add `receivers_path` attribute, to mailer class, not {type(receivers_path)}")
+            raise NotImplementedError(f"Add `receivers_path` type {PurePath} argument, not {type(receivers_path)}")
 
     def notify(self) -> None:
         articles = self.get_articles()
@@ -37,7 +37,7 @@ class BaseNotifier():
 
     def pre_notify(self, articles: list, receivers: list, *args, **kwargs) -> Tuple[list, list]:
         """
-        Executes before notyfing
+        Executes before notifying
         """
         return articles, receivers
 
@@ -46,7 +46,7 @@ class BaseNotifier():
 
     def post_notify(self, ex: Exception, articles: list, receivers: list, *args, **kwargs) -> bool:
         """
-        Executes after notyfing
+        Executes after notifying
         """
         return True
 
